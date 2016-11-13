@@ -1,0 +1,97 @@
+<!-- <md-subheader class="md-primary">DataDeck analisis de datos</md-subheader> -->
+<script type="text/javascript" src="/bundle/app.js"></script>
+<!-- <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+{% if (process.env.NODE_ENV == 'development') %}
+  <script type="text/javascript" src="{{'//' + req.hostname + ':35729/livereload.js'}}"></script>
+{% endif %}
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#container-line').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Google Search (Prestamo)'
+        },
+        xAxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+        },
+        yAxis: {
+            title: {
+                text: 'Interes'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: '2013',
+            data: [29, 52, 33, 56, 26, 66, 29, 38, 81, 33, 50, 88]
+        }, {
+            name: '2014',
+            data: [29, 78, 54, 63, 62, 32, 85, 39, 44, 70, 47, 69]
+        }, {
+            name: '2015',
+            data: [69, 52, 41, 100, 47, 66, 38, 52, 30, 31, 22, 50]
+        }, {
+            name: '2016',
+            data: [33, 36, 93, 24, 33, 69, 41, 100, 47, 66, 38, 52]
+        }]
+    });
+    $('#container-paid').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Interes de Prestamo 2011 - 2016'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: 'SACATEPEQUEZ',
+                    y: 100
+                }, {
+                    name: 'GUATEMALA',
+                    y: 95
+                }, {
+                    name: 'QUETZALTENANGO',
+                    y: 95
+                }, {
+                    name: 'HUEHUETENANGO',
+                    y: 92
+                }, {
+                    name: 'ALTA VERAPAZ',
+                    y: 86
+                }]
+            }]
+     });
+
+
+	
+});
+</script>
